@@ -1,0 +1,68 @@
+<html>
+<head>
+
+    <title>统计垃圾袋</title>
+</head>
+<style>
+    .main{
+        width:70%;
+        margin-left:15%;
+    }
+    .btn{
+        position:relative;
+        margin-lefit:30%;
+    }
+</style>
+<body>
+<div class="main">
+    <h1>嘿嘿</h1>
+<h1>就在下面输入原始文本</h1>
+<textarea id="txt" cols="120" rows="30"></textarea><br/><br/>
+<button class="btn" onclick="extract()">确定</button>
+</div>
+<div id=names class="main" style="width:100px;float:left">
+
+</div>
+<div id=values class="main" style="width:100px;float:left">
+
+</div>
+</body>
+<script type="text/javascript">
+    function extract(){
+        let txt = document.getElementById("txt").value;
+        let names = new Array();
+        let values = new Array();
+        if(txt&&txt.length>0){
+            lines = txt.split("\n")
+            for (let k in lines){
+                let line = lines[k];
+                if(line.indexOf("客")>-1){
+                    line = line.substring(2);
+                    let name = ""
+                    let value = ""
+                    for(let i=0;i<line.length;i++){
+                        if (line.charAt(i) == "于"){
+                            name = line.substring(0,i);
+                        }
+                        if (line.charAt(i) == "订"){
+                            value = line.substring(i+5,i+23);
+                        }
+                    }
+                    names.push(name)
+                    values.push(value)
+
+                }
+            }
+            let namestr = "";
+
+            let valuestr = "";
+            for (let j=0;j<names.length;j++){
+                namestr += names[j]+"\n";
+                valuestr += values[j]+"\n";
+            }
+            document.getElementById("names").innerText = namestr;
+            document.getElementById("values").innerText = valuestr;
+        }
+    }
+</script>
+</html>
