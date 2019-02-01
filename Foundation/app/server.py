@@ -10,7 +10,7 @@ def hello_world():
     return '吼吼吼田小桐'
 
 @app.route('/2019')
-def hello_world():
+def new_year():
     return render_template('2019.html')
 
 @app.route('/y')
