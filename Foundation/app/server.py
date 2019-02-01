@@ -9,6 +9,9 @@ app = Flask(__name__, static_folder='/Users/yifeil/git/PersonalWebsite/Foundatio
 def hello_world():
     return '吼吼吼田小桐'
 
+@app.route('/2019')
+def hello_world():
+    return render_template('2019.html')
 
 @app.route('/y')
 def trick():
